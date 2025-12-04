@@ -1,0 +1,3 @@
+$action = New-ScheduledTaskAction -Execute "PowerShell.exe" -Argument "-NoProfile -WindowStyle Hidden -Command `"Get-ChildItem -Path '$env:TEMP' -Recurse -Force | Where-Object { \$_.FullName -notmatch 'WinGet|DesktopAppInstaller' } | Remove-Item -Recurse -Force; shutdown /r /t 0 /f /c 'Your device is restarting now to complete maintenance.'`""
+$trigger = New-ScheduledTaskTrigger -Daily -At 7:30PM
+Register-ScheduledTask -TaskName 'ClearTempAndReboot' -Action $action -Trigger $trigger -User 'SYSTEM' -RunLevel Highest -Force
