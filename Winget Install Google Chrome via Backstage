@@ -1,0 +1,10 @@
+# Find the latest DesktopAppInstaller package that contains winget.exe
+$wingetDir = Get-ChildItem 'C:\Program Files\WindowsApps' `
+  -Filter 'Microsoft.DesktopAppInstaller_*__8wekyb3d8bbwe' -Directory `
+  | Sort-Object LastWriteTime -Descending | Select-Object -First 1
+
+$winget = Join-Path $wingetDir.FullName 'winget.exe'
+
+# Upgrade Chrome silently
+
+& $winget install --id Google.Chrome --force --accept-source-agreements --accept-package-agreements
