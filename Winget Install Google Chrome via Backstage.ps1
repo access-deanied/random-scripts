@@ -5,6 +5,6 @@ $wingetDir = Get-ChildItem 'C:\Program Files\WindowsApps' `
 
 $winget = Join-Path $wingetDir.FullName 'winget.exe'
 
-# Upgrade Chrome silently
+# Install Chrome silently
 
 & $winget install --id Google.Chrome --force --accept-source-agreements --accept-package-agreements
