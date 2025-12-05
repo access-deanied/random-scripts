@@ -1,4 +1,3 @@
-
 <#
     Delete Teams folder under all user profiles if found.
     Target: C:\Users\<Profile>\AppData\Local\Microsoft\Teams
